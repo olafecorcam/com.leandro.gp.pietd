@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdkExtension xmlns="http://www.sap.com/bi/zen/sdk" id="com.leandro.gp.pietd"
+	title="3D Pie Chart" version="1.0" vendor="SAP">
+	<component id="pietd" title="Pie 3D" tooltip="Pie 3D - OneDim/OneMeasure"
+		icon="res/icon.png" handlerType="div"
+		propertySheetPath="res/additional_properties_sheet/additional_properties_sheet.html"
+		databound="true">
+		<jsInclude>res/js/component.js</jsInclude>
+		<jsInclude>res/js/amcharts/amcharts.js</jsInclude>
+		<jsInclude>res/js/amcharts/pie.js</jsInclude>
+
+		<property id="dataResultSet" type="ResultSet" title="Data"
+			tooltip="Assing here the data used in your graph" group="DataBinding" />
+		<property id="corseparador" type="Color" title="Cor do Separador" group="Display" />
+		<property id="angulo" type="int" title="Ângulo" group="Display" />
+		<initialization>
+			<defaultValue property="WIDTH">300</defaultValue>
+			<defaultValue property="HEIGHT">200</defaultValue>
+			<defaultValue property="corseparador">#FFFFFF</defaultValue>
+			<defaultValue property="angulo">30</defaultValue>
+		</initialization>
+	</component>
+</sdkExtension>
