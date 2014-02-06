@@ -155,14 +155,15 @@ sap.designstudio.sdk.Component
 						chart.depth3D = _depth;
 						chart.angle = _angulo;
 
-						chart.addListener("clickSlice", function() {
-							return function(val) {
-								
+						chart.addListener("clickSlice", function(val) {
+							return function() {
+
 								that._clickedText = val.dataItem.title;
 								that._clickedValue = val.dataItem.value;
 								that.firePropertiesChanged( [ "clickedValue",
 										"clickedText" ]);
 								that.fireEvent("onclick");
+
 							};
 						}());
 
