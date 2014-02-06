@@ -1,0 +1,9 @@
+class com.leandro.gp.pietd.pietd extends Component {
+	String getClikedText(){*
+		return this.clickedText;
+	*}
+	Float getClikedValue(){*
+		return this.clickedValue;
+	*}
+	
+}

@@ -11,13 +11,33 @@
 
 		<property id="dataResultSet" type="ResultSet" title="Data"
 			tooltip="Assing here the data used in your graph" group="DataBinding" />
-		<property id="corseparador" type="Color" title="Cor do Separador" group="Display" />
+		<property id="corseparador" type="Color" title="Cor do Separador"
+			group="Display" />
 		<property id="angulo" type="int" title="Ângulo" group="Display" />
+		<property id="depth" type="int" title="Profundidade" group="Display" />
+		<property id="starteffect" type="String" title="Efeito"
+			group="Display">
+			<possibleValue>bounce</possibleValue>
+			<possibleValue>easeOutSine</possibleValue>
+			<possibleValue>easeInSine</possibleValue>
+			<possibleValue>elastic</possibleValue>
+		</property>
+		<property id="clickedValue" type="float" title="clickedValue"
+			group="Display" visible="true" />
+		<property id="clickedText" type="String" title="clickedText"
+			group="Display" visible="true" />
+			
+		<property id= "onclick" type= "ScriptText" title= "On Click" group= 
+		"Events" />
+			
+
 		<initialization>
 			<defaultValue property="WIDTH">300</defaultValue>
 			<defaultValue property="HEIGHT">200</defaultValue>
 			<defaultValue property="corseparador">#FFFFFF</defaultValue>
 			<defaultValue property="angulo">30</defaultValue>
+			<defaultValue property="depth">15</defaultValue>
+			<defaultValue property="starteffect">bounce</defaultValue>
 		</initialization>
 	</component>
 </sdkExtension>
