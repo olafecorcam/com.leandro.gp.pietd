@@ -11,21 +11,13 @@ sap.designstudio.sdk.Component
 
 					var _clickedText = null;
 					var _clickedValue = null;
-					var _isRepaint = null;
 
-					this.isRepaint = function(value) {
-						if (value === undefined) {
-							return this._isRepaint;
-						} else {
-							this._isRepaint = value;
-							return this;
-						}
-					};
 					this.clickedText = function(value) {
 						if (value === undefined) {
-							return this._clickedText;
+							alert(_clickedText);
+							return _clickedText;
 						} else {
-							this._clickedText = value;
+
 							return this;
 						}
 					};
@@ -34,7 +26,7 @@ sap.designstudio.sdk.Component
 						if (value === undefined) {
 							return _clickedValue;
 						} else {
-							this._clickedValue = value;
+
 							return this;
 						}
 					};
@@ -81,14 +73,11 @@ sap.designstudio.sdk.Component
 					};
 
 					this.init = function() {
-						_isRepaint = "OK";
+						// this.$().addClass(STYLE_DIV);
 					};
 
 					this.afterUpdate = function() {
-						if (_isRepaint == "NO") {
-							_isRepaint = "OK";
-							return;
-						}
+						this.$().empty();
 						this.getDimension = function() {
 							if (saveDataResultSet != undefined
 									|| saveDataResultSet != null)
@@ -146,6 +135,7 @@ sap.designstudio.sdk.Component
 							return chartData;
 						};
 
+						this.$().empty();
 						var chart;
 						var legend;
 
@@ -166,13 +156,16 @@ sap.designstudio.sdk.Component
 						chart.angle = _angulo;
 
 						chart.addListener("clickSlice", function(val) {
-							_isRepaint = "NO";
-							that._clickedText = val.dataItem.title;
-							that._clickedValue = val.dataItem.value;
-							that.firePropertiesChanged( [ "clickedValue",
-									"clickedText","isRepaint" ]);
-							that.fireEvent("onclick");
-						});
+							return function() {
+
+								that._clickedText = val.dataItem.title;
+								that._clickedValue = val.dataItem.value;
+								that.firePropertiesChanged( [ "clickedValue",
+										"clickedText" ]);
+								that.fireEvent("onclick");
+
+							};
+						}());
 
 						// WRITE
 						chart.write(this.$().attr("id"));
