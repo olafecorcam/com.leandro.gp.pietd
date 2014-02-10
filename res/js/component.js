@@ -13,6 +13,28 @@ sap.designstudio.sdk.Component
 					var _clickedValue = null;
 					var _isRepaint = null;
 
+					var _corPatern = null;
+
+					var _cores = null;
+
+					this.cores = function(value) {
+						if (value === undefined) {
+							return this._cores;
+						} else {
+							this._cores = value;
+							return this;
+						}
+					};
+
+					this.corPatern = function(value) {
+						if (value === undefined) {
+							return this._corPatern;
+						} else {
+							this._corPatern = value;
+							return this;
+						}
+					};
+
 					this.isRepaint = function(value) {
 						if (value === undefined) {
 							return this._isRepaint;
@@ -164,13 +186,17 @@ sap.designstudio.sdk.Component
 						// this makes the chart 3D
 						chart.depth3D = _depth;
 						chart.angle = _angulo;
+						if (this._corPatern != null && this._cores == null)
+							chart.baseColor = this._corPatern;
+						if (this._cores != null)
+							chart.colors =  this._cores.split(",");
 
 						chart.addListener("clickSlice", function(val) {
 							_isRepaint = "NO";
 							that._clickedText = val.dataItem.title;
 							that._clickedValue = val.dataItem.value;
 							that.firePropertiesChanged( [ "clickedValue",
-									"clickedText","isRepaint" ]);
+									"clickedText", "isRepaint" ]);
 							that.fireEvent("onclick");
 						});
 
